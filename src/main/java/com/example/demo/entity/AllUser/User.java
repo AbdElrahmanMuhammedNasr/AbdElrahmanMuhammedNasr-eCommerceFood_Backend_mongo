@@ -12,7 +12,6 @@ import java.util.Map;
 
 @Document
 @Data
-@ToString
 public class User {
 
     @Id
@@ -20,6 +19,7 @@ public class User {
     private byte[] image;
     private String phone ;
     private String fullName;
+    private String password;
     private String job;
     private String about;
     private List<String> links = new ArrayList<>();

@@ -9,4 +9,5 @@ import java.util.List;
 public interface CartInterface {
 
     List<Cart> getAllUserCarts(String phone);
+    Cart addToCart(Cart cart);
 }

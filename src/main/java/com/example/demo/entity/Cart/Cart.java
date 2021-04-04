@@ -14,11 +14,10 @@ public class Cart {
 
     @Id
     private String id;
-
     private byte [] caImage;
     private String caName;
     private short caPrice;
-    private String caProducer;
+    private String caProducerName;
     private Date created; // after producer accept the order
 
     @DBRef

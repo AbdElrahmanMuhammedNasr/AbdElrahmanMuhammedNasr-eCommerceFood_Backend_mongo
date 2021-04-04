@@ -18,4 +18,9 @@ public class CartInterfaceImpl implements CartInterface {
     public List<Cart> getAllUserCarts(String phone) {
         return cartRepository.findAllByUser_Phone(phone);
     }
+
+    @Override
+    public Cart addToCart(Cart cart) {
+        return cartRepository.save(cart);
+    }
 }
