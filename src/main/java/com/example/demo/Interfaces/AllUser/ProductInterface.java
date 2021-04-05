@@ -8,6 +8,8 @@ import java.util.List;
 @Service
 public interface ProductInterface {
 
+    List<Product> getSomeProductUsingCategory(int size ,String category);
+
     Product addProduct(Product product);
 
     Product getOneProduct(String id);

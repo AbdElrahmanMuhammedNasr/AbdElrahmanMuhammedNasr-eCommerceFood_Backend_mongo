@@ -7,7 +7,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,20 +25,34 @@ public class UserProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        String phone = authentication.getName();
-        String password = (String) authentication.getCredentials();
+        try {
+            String phone = authentication.getName();
+            String password = (String) authentication.getCredentials();
 
-        UserDetails userDetails = myUserDetailsService.loadUserByUsername(phone);
-        if (userDetails != null){
-            if (passwordEncoder.matches(password , userDetails.getPassword())){
 
-                UsernamePasswordAuthenticationToken usernamePasswordAuthentication = new UsernamePasswordAuthenticationToken(phone, password);
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthentication);
-                return  usernamePasswordAuthentication;
+            UserDetails userDetails = myUserDetailsService.loadUserByUsername(phone);
+            if (userDetails != null) {
+                System.out.println(phone);
+                System.out.println(password);
+
+                if (passwordEncoder.matches(password, userDetails.getPassword())) {
+
+
+                    Authentication usernamePasswordAuthentication = new UsernamePasswordAuthenticationToken(phone, password);
+
+                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthentication);
+                    System.out.println("***************************");
+
+                    return usernamePasswordAuthentication;
+                }
             }
-        }
 
-        throw new BadCredentialsException("Not Auth");
+            throw new BadCredentialsException("Not Auth");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new BadCredentialsException("Not Auth");
+
+        }
 
     }
 

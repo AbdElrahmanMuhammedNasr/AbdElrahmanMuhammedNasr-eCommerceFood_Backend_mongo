@@ -1,8 +1,9 @@
 package com.example.demo.entity.AllUser;
 
 import lombok.Data;
-import lombok.ToString;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class User {
     @Id
     private String id;
     private byte[] image;
+    @Indexed(unique = true)
     private String phone ;
     private String fullName;
     private String password;

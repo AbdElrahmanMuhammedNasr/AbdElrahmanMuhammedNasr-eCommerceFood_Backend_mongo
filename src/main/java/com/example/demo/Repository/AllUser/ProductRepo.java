@@ -14,8 +14,8 @@ public interface ProductRepo extends MongoRepository<Product, String> {
     @Query(value = "{ '_id' : ?0 }", fields = "{}")
     Optional<Product> findById(String id);
 
-    @Query(value = "{}", fields = "{'user' :0 }")
-    List<Product> getSomeProduct();
+    @Query(value = "{ 'pcategory': ?1 ,$sample: {size: ?0} }", fields = "{'user' :0 }")
+    List<Product> getSomeProduct(int size, String category);
 
     //    get all user product
     @Query(value = "{}", fields = "{'user':0}")

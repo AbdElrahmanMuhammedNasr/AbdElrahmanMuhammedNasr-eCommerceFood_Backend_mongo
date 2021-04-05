@@ -15,6 +15,11 @@ public class ProductInterfaceImpl implements ProductInterface {
 
 
     @Override
+    public List<Product> getSomeProductUsingCategory(int size ,String category) {
+        return productRepo.getSomeProduct(size ,category);
+    }
+
+    @Override
     public Product addProduct(Product product) {
         return productRepo.save(product);
     }

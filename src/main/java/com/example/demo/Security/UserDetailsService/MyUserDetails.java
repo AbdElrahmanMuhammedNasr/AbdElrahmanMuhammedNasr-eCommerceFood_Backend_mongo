@@ -10,11 +10,14 @@ import java.util.Collection;
 @Service
 public class MyUserDetails implements UserDetails {
 
-    private User user;
+     private User user;
 
-    public MyUserDetails(User user){
+    public MyUserDetails() {}
+
+    public MyUserDetails(User user) {
         this.user = user;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -23,12 +26,12 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getFullName();
+        return this.user.getFullName();
     }
 
     @Override
