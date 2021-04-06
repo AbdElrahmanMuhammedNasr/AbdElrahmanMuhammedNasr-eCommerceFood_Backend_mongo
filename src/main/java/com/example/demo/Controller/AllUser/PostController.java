@@ -23,7 +23,7 @@ public class PostController {
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
 
         post.setCreated(new Date());
-        post.setUser(userInterface.getUserData("01200000000"));
+        post.setUser(userInterface.getUserData("01550449049"));
         postInterface.addNewPost(post);
 
         return new ResponseEntity<>(post, HttpStatus.OK);

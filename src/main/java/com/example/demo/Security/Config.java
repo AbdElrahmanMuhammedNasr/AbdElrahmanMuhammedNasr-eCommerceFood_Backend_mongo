@@ -45,7 +45,7 @@ public class Config extends WebSecurityConfigurerAdapter {
 //                .addFilterBefore()
 
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,PUBLIC_ENDPOINTS).permitAll()
+                .antMatchers(PUBLIC_ENDPOINTS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()

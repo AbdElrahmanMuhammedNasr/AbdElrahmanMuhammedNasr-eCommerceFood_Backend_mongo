@@ -30,6 +30,7 @@ public class User {
     private String city;
     private String street;
     private Date created;
+    private String Role;
 
 
 }

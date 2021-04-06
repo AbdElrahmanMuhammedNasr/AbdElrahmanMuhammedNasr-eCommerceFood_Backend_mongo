@@ -38,7 +38,7 @@ public class UserProvider implements AuthenticationProvider {
                 if (passwordEncoder.matches(password, userDetails.getPassword())) {
 
 
-                    Authentication usernamePasswordAuthentication = new UsernamePasswordAuthenticationToken(phone, password);
+                    Authentication usernamePasswordAuthentication = new UsernamePasswordAuthenticationToken(phone, password,userDetails.getAuthorities());
 
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthentication);
                     System.out.println("***************************");
